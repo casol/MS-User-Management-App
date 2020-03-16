@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>User Management Tool</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"></script>
+  {% block extrahead %}
+  {% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'management_tool/css/style.css' %}">
+</head>
+<body>
+  <div id="header">
+      <span class="logo">Management Tool</span>
+      {% if request.user.is_authenticated %}
+        <ul class="menu">
+          <li {% if section == "home" %}class="selected"{% endif %}>
+            <a href="{% url "home" %}">Home</a>
+            </li>
+            <li {% if section == "account" %}class="selected"{% endif %}>
+            <a href="{% url "user_details" request.user.username %}">Account</a>
+            </li>
+            <li {% if section == "users" %}class="selected"{% endif %}>
+            <a href="{% url "user_list" %}">Users</a>
+          </li>
+        </ul>
+      {% endif %}
+    <span class="user">
+    {% if request.user.is_authenticated %}
+    {{ request.user.username }},
+    <a href="{% url "logout" %}">Logout</a>
+    {% else %}
+    <a href="{% url "login" %}">Log-in</a> / 
+    <a href="{% url "signup" %}">Sign Up.</a>
+    {% endif %}
+    </span>
+    </div>
+
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+</body>
+</html>

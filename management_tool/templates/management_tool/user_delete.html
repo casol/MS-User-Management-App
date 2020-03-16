@@ -1,0 +1,14 @@
+{% extends "management_tool/base.html" %}
+
+{% block title %}<title>Delete Your Account</title>{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form action="." method="POST">
+    {% csrf_token %}
+    <h1>Are you sure you want to delete your account?</h1>
+    <p><input type="submit" value="Yes"/> </p>
+</form>
+<a href="{% url "home" %}"><input type="submit" value="Cancel"></input></a>
+{% endif %}
+{% endblock %}

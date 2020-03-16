@@ -1,0 +1,23 @@
+{% extends "management_tool/base.html" %}
+
+{% block title %}<title>Home</title>{% endblock %}
+
+{% block content %}
+<h1>Home</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<p>Welcome to your Home Page.
+    {% if request.user.is_authenticated %}
+        You can <a href="{% url "user_edit" %}">edit your
+        profile</a> or <a href="{% url "password_change" %}">change your password.
+    {% else %}
+        <p>
+        <a href="{% url "login" %}">Log-in</a> or  <a href="{% url "signup" %}">Sign Up.</a>
+    {% endif %}
+</a></p>
+{% endblock %}

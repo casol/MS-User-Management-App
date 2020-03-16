@@ -1,0 +1,16 @@
+{% extends "management_tool/base.html" %}
+{% block extrahead %}
+{{ user_form.media }}
+{% endblock %}
+
+{% block title %}<title>Sign Up!</title>{% endblock %}
+
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}

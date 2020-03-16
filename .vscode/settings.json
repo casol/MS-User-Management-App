@@ -1,0 +1,23 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "cSpell.ignoreWords": [
+        "allowed",
+        "bizz",
+        "bizzfuzz",
+        "diizvixe",
+        "enjzqq",
+        "for",
+        "fuzz",
+        "get",
+        "signup",
+        "sqlite",
+        "strftime",
+        "tag",
+        "test",
+        "user",
+        "validlink"
+    ],
+    "python.pythonPath": "env/bin/python"
+}

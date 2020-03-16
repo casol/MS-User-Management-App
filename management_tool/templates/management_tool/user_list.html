@@ -1,0 +1,33 @@
+{% extends "management_tool/base.html" %}
+{% load eligible %}
+{% load bizz_fuzz %}
+
+{% block title %}<title>Users</title>{% endblock %}
+
+{% block content %}
+  <h1>User Management Tool</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Eligible</th>
+        <th scope="col">Random Number</th>
+        <th scope="col">BizzFuzz</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in user_list %}
+      <tr>
+        <td><a href="{{ user.get_absolute_url }}">{{ user.username }}</a></td>
+        <td>{{ user.birth_date }}</td>
+        <td>{{ user.birth_date|calculate_age }}</td>
+        <td>{{ user.random_number }}</td>        
+        <td>{{ user.random_number|get_bizz_fuzz }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url "export_user_csv"%}">Export to CSV file</a>
+
+{% endblock %}
