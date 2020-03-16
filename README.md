@@ -39,7 +39,13 @@ Setup a local server:
 ```
 (env) $ python manage.py runserver
 ```
+Goto
 
+[http://127.0.0.1:8000/home/](http://127.0.0.1:8000/home/)
+
+or
+
+[http://127.0.0.1:8000/signup/](http://127.0.0.1:8000/signup/)
 
 ## Built With
 
