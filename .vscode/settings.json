@@ -18,6 +18,5 @@
         "test",
         "user",
         "validlink"
-    ],
-    "python.pythonPath": "env/bin/python"
+    ]
 }
